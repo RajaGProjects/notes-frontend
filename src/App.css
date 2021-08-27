@@ -1,12 +1,10 @@
 .App {
   text-align: center;
-  min-height: 100%;
+  height: 100%;
   width: 100%;
-  margin-top: 30px;
-  padding-bottom: 60px;
+  /* padding-bottom: 60px; */
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 .notes-list {
   display: flex;
@@ -18,4 +16,20 @@
   font-size: 20px;
   font-weight: bolder;
   margin-bottom: 5em;
+  margin-top: 5em;
+}
+.note-link {
+  margin-top: 10px;
+}
+
+.App .add-button {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  border-radius: 50%;
+  font-size: 32px;
+  width: 50px;
+  height: 50px;
+
+  padding: 0;
 }

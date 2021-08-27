@@ -38,20 +38,31 @@
 }
 .note__text {
   flex: 1;
+  overflow: hidden;
 }
 
-.note:hover {
+.note:hover,
+.note.note--focused {
   transform: scale(1.5);
   z-index: 5;
   border-radius: 1em;
 }
 
-.note:focus-within {
+/* Wrote this one by myself it worked fine  */
+/* .note:focus-within {
   transform: scale(1.5);
   z-index: 7;
   border-radius: 1em;
-}
+} */
 
 .note__link {
-  display: none;
+  /* display: none; */
+}
+
+.note .btn-close {
+  position: absolute;
+  top: 4px;
+  right: 7px;
+  width: 3px;
+  height: 9px;
 }
