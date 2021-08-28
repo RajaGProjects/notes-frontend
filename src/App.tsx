@@ -117,7 +117,7 @@ function App() {
           <Modal.Title>Add Note</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <FloatingLabel controlId="floatingTextarea2" label="Comments">
+          <FloatingLabel controlId="floatingTextarea2" label="Text">
             <Form.Control
               onChange={(event) => {
                 const NewVal = event.currentTarget.value;
@@ -127,7 +127,7 @@ function App() {
                 });
               }}
               as="textarea"
-              placeholder="Enter your text"
+              placeholder="Leave a comment here"
               style={{ height: "100px" }}
             />
           </FloatingLabel>
@@ -144,8 +144,8 @@ function App() {
                   text: NewVal,
                 });
               }}
-              type="url"
               placeholder="Enter note Url"
+              type="url"
             />
           </FloatingLabel>
         </Modal.Body>
