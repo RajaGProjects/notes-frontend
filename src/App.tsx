@@ -91,7 +91,7 @@ function App() {
   const addNote = async () => {
     const savedNote = await createNote(newNote);
     setNotesList([...notesList, savedNote]);
-    handleShowAddModal();
+    handleCloseAddModal();
   };
   const deleteNoteItem = async (noteToDelete: INote) => {
     await deleteNote(noteToDelete._id);
@@ -141,7 +141,7 @@ function App() {
                 const NewVal = event.currentTarget.value;
                 setNewNote({
                   ...newNote,
-                  text: NewVal,
+                  link: NewVal,
                 });
               }}
               placeholder="Enter note Url"
