@@ -10,6 +10,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 0 15px;
 }
 
 .t1-main {
@@ -17,9 +18,6 @@
   font-weight: bolder;
   margin-bottom: 5em;
   margin-top: 5em;
-}
-.note-link {
-  margin-top: 10px;
 }
 
 .App .add-button {
@@ -32,4 +30,12 @@
   height: 50px;
   z-index: 3;
   padding: 0;
+}
+.App .add-button:focus {
+  outline: none;
+  box-shadow: none;
+}
+.App .add-button:active {
+  box-shadow: 0 0 0 0.25rem rgb(66 70 73 / 50%);
+  outline: 0;
 }

@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLink, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { FC, FocusEvent, useState } from "react"; // Importing Functional Component and it used to define type
 import INote from "../../interfaces/note.interface";
 import "./Note.css";
@@ -14,7 +16,7 @@ const Note: FC<Props> = ({ note, onNoteUpdate, onNoteDelete }) => {
 
   const noteTextUpdated = (e: FocusEvent<HTMLDivElement>) => {
     setIsFocused(false);
-    console.log("note text change");
+    // console.log("note text change");
     const newTextValue = e.currentTarget.textContent;
     if (newTextValue === note.text) {
       return;
@@ -29,6 +31,14 @@ const Note: FC<Props> = ({ note, onNoteUpdate, onNoteDelete }) => {
 
   return (
     <div className={isFocused ? "note note--focused" : "note"}>
+      <div className="note__link">
+        <a className="link" target="_blank" rel="noreferrer" href={note.link}>
+          <FontAwesomeIcon icon={faLink} />
+        </a>
+        <a href="./s">
+          <FontAwesomeIcon icon={faPencilAlt} />
+        </a>
+      </div>
       <button
         onClick={() => {
           onNoteDelete(note);
@@ -47,9 +57,6 @@ const Note: FC<Props> = ({ note, onNoteUpdate, onNoteDelete }) => {
         className="note__text"
       >
         {note.text}
-      </div>
-      <div className="note__link">
-        <a href={note.link}>link</a>
       </div>
     </div>
   );

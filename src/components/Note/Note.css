@@ -30,16 +30,13 @@
 }
 *:focus {
   outline: 0;
-  /* border: 2px solid; */
-
-  /* border-color: #f1c17d; */
-  /* border-radius: 0.5em; */
 }
 .note__text {
   flex: 1;
   padding-right: 0.5em;
   padding-left: 1em;
   margin-top: 1.4em;
+  margin-bottom: 0.5em;
   margin-right: 9px;
   overflow: auto;
 }
@@ -48,13 +45,14 @@
   width: 4px;
 }
 .note__text::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
 }
 .note__text::-webkit-scrollbar-thumb {
   border-radius: 5px;
-  -webkit-box-shadow: inset 0 0 6px grey;
+  box-shadow: inset 0 0 6px grey;
 }
+
 .note:hover,
 .note.note--focused {
   transform: scale(1.5);
@@ -62,8 +60,24 @@
   border-radius: 1em;
 }
 .note__link {
-  font-size: 0.8em;
+  text-align: left;
+  position: absolute;
+  left: 7px;
+  top: 2px;
+  font-size: 13px;
 }
+.note__link a,
+.note__link a:hover {
+  color: blue;
+}
+
+.note__link a {
+  opacity: 0.6;
+}
+.note__link a:hover {
+  opacity: 1;
+}
+
 /* Wrote this one by myself it worked fine  */
 /* .note:focus-within {
   transform: scale(1.5);
@@ -73,8 +87,8 @@
 
 .note .btn-close {
   position: absolute;
-  top: 4px;
-  right: 7px;
+  top: 5px;
+  right: 12px;
   width: 3px;
   height: 9px;
 }
