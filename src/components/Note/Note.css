@@ -59,25 +59,34 @@
   z-index: 5;
   border-radius: 1em;
 }
-.note__link {
+.note__tools {
   text-align: left;
   position: absolute;
   left: 7px;
   top: 2px;
   font-size: 13px;
 }
-.note__link a,
-.note__link a:hover {
+.note__tools a,
+.note__tools a:hover {
   color: blue;
 }
 
-.note__link a {
+.note__tools a {
   opacity: 0.6;
 }
-.note__link a:hover {
+.note__tools a:hover {
   opacity: 1;
 }
 
+.note__tools button {
+  border: transparent;
+  background-color: transparent;
+  opacity: 0.6;
+  color: blue;
+}
+.note__tools button:hover {
+  opacity: 1;
+}
 /* Wrote this one by myself it worked fine  */
 /* .note:focus-within {
   transform: scale(1.5);

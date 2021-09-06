@@ -8,10 +8,16 @@ type Props = {
   note: INote;
   onNoteUpdate: (note: INote) => void;
   onNoteDelete: (note: INote) => void;
+  toggleHandler: (note: INote) => void;
   //   onNoteUpdate: Function;
 };
 
-const Note: FC<Props> = ({ note, onNoteUpdate, onNoteDelete }) => {
+const Note: FC<Props> = ({
+  note,
+  onNoteUpdate,
+  onNoteDelete,
+  toggleHandler,
+}) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const noteTextUpdated = (e: FocusEvent<HTMLDivElement>) => {
@@ -31,13 +37,17 @@ const Note: FC<Props> = ({ note, onNoteUpdate, onNoteDelete }) => {
 
   return (
     <div className={isFocused ? "note note--focused" : "note"}>
-      <div className="note__link">
+      <div className="note__tools">
         <a className="link" target="_blank" rel="noreferrer" href={note.link}>
           <FontAwesomeIcon icon={faLink} />
         </a>
-        <a href="./s">
+        <button
+          onClick={() => {
+            toggleHandler(note);
+          }}
+        >
           <FontAwesomeIcon icon={faPencilAlt} />
-        </a>
+        </button>
       </div>
       <button
         onClick={() => {

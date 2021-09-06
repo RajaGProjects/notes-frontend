@@ -16,9 +16,14 @@ function App() {
   //   console.log('we are awesome')
   // }
   // let notesList: any[] = []; //note list variable
-
+  enum ModalNotes {
+    Add,
+    Edit,
+  }
   const [notesList, setNotesList] = useState<Array<INote>>([]);
   const [ShowAddModal, setShowAddModal] = useState(false);
+  const [modalNote, setModalNote] = useState(ModalNotes.Add);
+  // const [ShowUpdateModal, setShowUpdateModal] = useState(false);
   const handleCloseAddModal = () => {
     setNewNote({
       link: "",
@@ -26,7 +31,25 @@ function App() {
     });
     setShowAddModal(false);
   };
-  const handleShowAddModal = () => setShowAddModal(true);
+  const handleShowAddModal = () => {
+    setModalNote(ModalNotes.Add);
+    setShowAddModal(true);
+  };
+
+  const handleShowUpdateModal = (note: INote) => {
+    setNewNote(note);
+    setModalNote(ModalNotes.Edit);
+    setShowAddModal(true);
+    // updateNoteItem(newNote as INote);
+    // updateNoteItem(note);
+  };
+
+  // const handleCloseUpdateModal = () => setShowUpdateModal(false);
+
+  const editNote = async () => {
+    updateNoteItem(newNote as INote);
+    setShowAddModal(false);
+  };
 
   const [newNote, setNewNote] = useState<Partial<INote>>({
     link: "",
@@ -114,7 +137,9 @@ function App() {
 
       <Modal show={ShowAddModal} onHide={handleCloseAddModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Note</Modal.Title>
+          <Modal.Title>
+            {modalNote === ModalNotes.Add ? "Add" : "Edit"} Note
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <FloatingLabel controlId="floatingTextarea2" label="Text">
@@ -127,6 +152,7 @@ function App() {
                 });
               }}
               as="textarea"
+              value={newNote.text}
               placeholder="Leave a comment here"
               style={{ height: "100px" }}
             />
@@ -146,6 +172,7 @@ function App() {
               }}
               placeholder="Enter note Url"
               type="url"
+              value={newNote.link}
             />
           </FloatingLabel>
         </Modal.Body>
@@ -153,11 +180,63 @@ function App() {
           <Button variant="secondary" onClick={handleCloseAddModal}>
             Close
           </Button>
-          <Button variant="primary" onClick={addNote}>
-            Create
+          <Button
+            variant="primary"
+            onClick={modalNote === ModalNotes.Add ? addNote : editNote}
+          >
+            {modalNote === ModalNotes.Add ? "Create" : "Update"}
           </Button>
         </Modal.Footer>
       </Modal>
+
+      {/* <Modal show={ShowUpdateModal} onHide={handleCloseUpdateModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>Update Note</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <FloatingLabel controlId="floatingTextarea2" label="Text">
+              <Form.Control
+                onChange={(event) => {
+                  const NewVal = event.currentTarget.value;
+                  setNewNote({
+                    ...newNote,
+                    text: NewVal,
+                  });
+                }}
+                value={newNote.text}
+                as="textarea"
+                placeholder="Leave a comment here"
+                style={{ height: "100px" }}
+              />
+            </FloatingLabel>
+            <FloatingLabel
+              controlId="floatingTextarea"
+              label="Link"
+              className="mb-3 note-link"
+            >
+              <Form.Control
+                onChange={(event) => {
+                  const NewVal = event.currentTarget.value;
+                  setNewNote({
+                    ...newNote,
+                    link: NewVal,
+                  });
+                }}
+                value={newNote.link}
+                placeholder="Enter note Url"
+                type="url"
+              />
+            </FloatingLabel>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseUpdateModal}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={editNote}>
+              Update
+            </Button>
+          </Modal.Footer>
+        </Modal> */}
       <div className="notes-list">
         {notesList.map((noteItem, index) => {
           return (
@@ -166,6 +245,7 @@ function App() {
               onNoteUpdate={updateNoteItem}
               onNoteDelete={deleteNoteItem}
               key={index}
+              toggleHandler={handleShowUpdateModal}
             />
           );
         })}
