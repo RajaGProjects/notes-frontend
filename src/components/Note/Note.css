@@ -35,7 +35,6 @@
   flex: 1;
   padding-right: 0.5em;
   padding-left: 1em;
-  margin-top: 1.4em;
   margin-bottom: 0.5em;
   margin-right: 9px;
   overflow: auto;
@@ -100,4 +99,15 @@
   right: 12px;
   width: 3px;
   height: 9px;
+}
+
+.note__pin {
+  color: #b05b3b;
+  border: transparent;
+  align-self: center;
+  background-color: transparent;
+}
+.note__pin:active,
+.note__pin.note__pinned {
+  color: #6a492b;
 }

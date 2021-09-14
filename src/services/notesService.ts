@@ -13,8 +13,9 @@ export const getNotes = async () => {
 
 export const createNote = async (newNote: Partial<INote>) => {
   try {
-    const reponse = await axios.post(NOTES_API_URL, newNote);
-    return reponse.data.note;
+    const response = await axios.post(NOTES_API_URL, newNote);
+    console.log(response);
+    return response.data.note;
   } catch (error) {
     console.log(error);
   }
@@ -34,6 +35,16 @@ export const updateNote = async (noteToUpdate: INote) => {
   try {
     const url = `${NOTES_API_URL}/${noteToUpdate._id}`;
     const response = await axios.put(url, noteToUpdate);
+    return response.data.updatedNote;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const pinnedNote = async (noteToPinId: INote) => {
+  try {
+    const url = `${NOTES_API_URL}/${noteToPinId._id}`;
+    const response = await axios.put(url, noteToPinId);
     return response.data.updatedNote;
   } catch (error) {
     console.error(error);

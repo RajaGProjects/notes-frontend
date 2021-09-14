@@ -17,8 +17,27 @@
 .t1-main {
   font-size: 20px;
   font-weight: bolder;
-  margin-bottom: 5em;
-  margin-top: 5em;
+  padding-bottom: 1em;
+  margin-bottom: 3em;
+  border-bottom: 2px solid #6a4919;
+  color: #6a4919;
+  margin-top: 1em;
+}
+.note__logo {
+  position: fixed;
+  bottom: 50px;
+  left: 35px;
+  background-color: #f1c103;
+  cursor: pointer;
+  width: 210px;
+  height: 80px;
+  border-radius: 12px;
+}
+.note__logo img {
+  position: relative;
+  top: -50px;
+  width: 210px;
+  height: 206px;
 }
 
 .modal-content {
@@ -81,6 +100,10 @@
     margin-top: 1em;
     margin-bottom: 1em;
     font-size: 15px;
+    border-bottom: none;
+  }
+  .note__logo {
+    display: none;
   }
 }
 
@@ -93,12 +116,19 @@
   .t1-main {
     margin-top: 1em;
     margin-bottom: 1em;
-    font-size: 20px;
+    font-size: 18px;
+    border-bottom: none;
+  }
+  .note__logo {
+    display: none;
   }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (max-width: 992px) {
+  .note__logo {
+    display: none;
+  }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */

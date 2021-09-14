@@ -1,10 +1,12 @@
 import "./App.css";
 import { useEffect, useState } from "react";
+import Logo from "./assets/RajaG.gif";
 import {
   deleteNote,
   createNote,
   getNotes,
   updateNote,
+  pinnedNote,
 } from "./services/notesService";
 // import DUMMY_NOTES from "./DUMMY_NOTES";
 import Note from "./components/Note/Note";
@@ -28,6 +30,7 @@ function App() {
     setNewNote({
       link: "",
       text: "",
+      pinned: false,
     });
     setShowAddModal(false);
   };
@@ -46,14 +49,10 @@ function App() {
 
   // const handleCloseUpdateModal = () => setShowUpdateModal(false);
 
-  const editNote = async () => {
-    updateNoteItem(newNote as INote);
-    setShowAddModal(false);
-  };
-
   const [newNote, setNewNote] = useState<Partial<INote>>({
     link: "",
     text: "",
+    pinned: false,
   });
   // const [notesList, setNotesList] = useState<any[]>([]);
 
@@ -73,7 +72,12 @@ function App() {
 
   const getNotesFromServer = async () => {
     const notes = await getNotes();
-    setNotesList(notes);
+    // console.log(notes[0].pinned);
+    const sortNotesList = notes.sort((noteItem: INote) => {
+      return noteItem.pinned ? -1 : 1;
+    });
+    console.log(sortNotesList);
+    setNotesList(sortNotesList);
   };
 
   // useEffect(() => {
@@ -99,6 +103,7 @@ function App() {
   // }
   // console.log("rerendering");
   // console.log(notesList);
+
   const updateNoteItem = async (updatedNote: INote) => {
     const noteFromServer = await updateNote(updatedNote);
     // temporary variable
@@ -116,12 +121,48 @@ function App() {
     setNotesList([...notesList, savedNote]);
     handleCloseAddModal();
   };
+
+  const editNote = async () => {
+    updateNoteItem(newNote as INote);
+    setShowAddModal(false);
+  };
+
   const deleteNoteItem = async (noteToDelete: INote) => {
     await deleteNote(noteToDelete._id);
     const remainingNotes = notesList.filter((noteItem) => {
       return noteItem._id !== noteToDelete._id;
     });
     setNotesList(remainingNotes);
+  };
+
+  const pinnedItem = async (pinned: INote) => {
+    const notePinned = await pinnedNote(pinned);
+    const updatedPinList = notesList.map((noteItem: INote) => {
+      if (noteItem._id === notePinned._id) {
+        return notePinned;
+      }
+      return noteItem;
+    });
+    const sortNotesList = updatedPinList.sort((noteItem: INote) => {
+      return noteItem.pinned ? -1 : 1;
+    });
+    setNotesList(sortNotesList);
+    // console.log(notePin);
+    // const updatedList = notesList.map((noteItem: INote) => {
+    //   if (noteItem._id === notePin._id) {
+    //     return !noteItem.pinned;
+    //   }
+    //   return noteItem;
+    // });
+    // const noteId = note._id;
+    // const updatedList = notesList.map((noteItem: INote) => {
+    //   if (noteItem._id === noteFromServer._id) {
+    //     return noteFromServer;
+    //   }
+    //   return noteItem;
+    // });
+
+    // console.log(remainingNotes);
   };
 
   return (
@@ -246,9 +287,13 @@ function App() {
               onNoteDelete={deleteNoteItem}
               key={index}
               toggleHandler={handleShowUpdateModal}
+              isPinned={pinnedItem}
             />
           );
         })}
+      </div>
+      <div className="note__logo">
+        <img src={Logo} alt="" />
       </div>
     </div>
   );
