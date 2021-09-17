@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/notes-frontend/static/css/main.1d5db7b9.chunk.css",
-    "main.js": "/notes-frontend/static/js/main.42e2fbee.chunk.js",
-    "main.js.map": "/notes-frontend/static/js/main.42e2fbee.chunk.js.map",
+    "main.css": "/notes-frontend/static/css/main.69f0c932.chunk.css",
+    "main.js": "/notes-frontend/static/js/main.e082743d.chunk.js",
+    "main.js.map": "/notes-frontend/static/js/main.e082743d.chunk.js.map",
     "runtime-main.js": "/notes-frontend/static/js/runtime-main.848bec04.js",
     "runtime-main.js.map": "/notes-frontend/static/js/runtime-main.848bec04.js.map",
     "static/css/2.d0d6a906.chunk.css": "/notes-frontend/static/css/2.d0d6a906.chunk.css",
@@ -12,7 +12,7 @@
     "static/js/3.c69c05fc.chunk.js.map": "/notes-frontend/static/js/3.c69c05fc.chunk.js.map",
     "index.html": "/notes-frontend/index.html",
     "static/css/2.d0d6a906.chunk.css.map": "/notes-frontend/static/css/2.d0d6a906.chunk.css.map",
-    "static/css/main.1d5db7b9.chunk.css.map": "/notes-frontend/static/css/main.1d5db7b9.chunk.css.map",
+    "static/css/main.69f0c932.chunk.css.map": "/notes-frontend/static/css/main.69f0c932.chunk.css.map",
     "static/js/2.377f61ee.chunk.js.LICENSE.txt": "/notes-frontend/static/js/2.377f61ee.chunk.js.LICENSE.txt",
     "static/media/RajaG.05ab71b7.gif": "/notes-frontend/static/media/RajaG.05ab71b7.gif"
   },
@@ -20,7 +20,7 @@
     "static/js/runtime-main.848bec04.js",
     "static/css/2.d0d6a906.chunk.css",
     "static/js/2.377f61ee.chunk.js",
-    "static/css/main.1d5db7b9.chunk.css",
-    "static/js/main.42e2fbee.chunk.js"
+    "static/css/main.69f0c932.chunk.css",
+    "static/js/main.e082743d.chunk.js"
   ]
 }
